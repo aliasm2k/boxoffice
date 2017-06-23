@@ -12,6 +12,18 @@ with open('Boxoffice/logging.json') as config:
     logging.config.dictConfig(json.load(config))
 
 
+def dump_json(payload):
+    """Serialize payload into json file."""
+    with open('Boxoffice/boxoffice.json', 'w') as json_out:
+        json.dump(payload, json_out)
+
+
+def load_json():
+    """Deserialize payload to dictionary and return."""
+    with open('Boxoffice/boxoffice.json') as json_in:
+        return json.load(json_in)
+
+
 class Movie(object):
     """Connect to The Movie Database and fetch movie details."""
 

@@ -14,13 +14,20 @@ import time
 )
 def launcher(movies):
     """Accept a list of movies and launch Boxoffice."""
+    payload = {'movies': []}
     for movie in movies.split(','):
         mov_obj = Boxoffice.Movie(movie)
         results = mov_obj.total_results()
         mov_dict = mov_obj.movie_details()
         Boxoffice.Logger.info('{} [{} results]'.format(movie.title(), results))
-        Boxoffice.Logger.info(mov_dict)
+        if results > 0:
+            payload.get('movies').append(mov_dict)
+        else:
+            Boxoffice.Logger.info('{} not found'.format(movie.title()))
         time.sleep(5)
+
+    Boxoffice.dump_json(payload)
+    Boxoffice.Logger.info('Fetched: {}'.format(len(payload.get('movies'))))
 
 
 if __name__ == '__main__':
