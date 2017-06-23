@@ -2,6 +2,7 @@
 
 """Boxoffice CLI."""
 
+import Boxoffice
 import click
 
 
@@ -12,7 +13,8 @@ import click
 )
 def launcher(movies):
     """Accept a list of movies and launch Boxoffice."""
-    pass
+    for movie in movies.split(','):
+        Boxoffice.Logger.info(movie.title())
 
 
 if __name__ == '__main__':
