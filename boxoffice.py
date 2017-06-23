@@ -19,9 +19,9 @@ def launcher(movies):
     for movie in movies.split(','):
         mov_obj = Boxoffice.Movie(movie)
         results = mov_obj.total_results()
-        mov_dict = mov_obj.movie_details()
         Boxoffice.Logger.info('{} [{} results]'.format(movie.title(), results))
         if results > 0:
+            mov_dict = mov_obj.movie_details()
             payload.get('movies').append(mov_dict)
         else:
             Boxoffice.Logger.info('{} not found'.format(movie.title()))
