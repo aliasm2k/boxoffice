@@ -7,7 +7,7 @@
         <title>{% block title %}{% endblock %}</title>
         <meta name="description" content="{% block description %}{% endblock %}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="https://cdn.jsdelivr.net/modernizr/3.3.1/modernizr.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
         {% endblock %}
     </head>
     <body>
