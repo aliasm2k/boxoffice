@@ -2,6 +2,7 @@
 
 """Define various elements required."""
 
+import flask
 import json
 import logging
 import logging.config
@@ -10,6 +11,14 @@ import urllib
 Logger = logging.getLogger(__name__)
 with open('Boxoffice/logging.json') as config:
     logging.config.dictConfig(json.load(config))
+
+WebApp = flask.Flask(__name__)
+
+
+@WebApp.route('/')
+def index_action():
+    """Render webpage displaying details of user specified movies."""
+    return flask.render_template('home.tpl')
 
 
 def dump_json(payload):

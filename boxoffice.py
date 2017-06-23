@@ -5,6 +5,7 @@
 import Boxoffice
 import click
 import time
+import webbrowser
 
 
 @click.command()
@@ -28,6 +29,8 @@ def launcher(movies):
 
     Boxoffice.dump_json(payload)
     Boxoffice.Logger.info('Fetched: {}'.format(len(payload.get('movies'))))
+    webbrowser.open('localhost:8080')
+    Boxoffice.WebApp.run(port=8080)
 
 
 if __name__ == '__main__':
