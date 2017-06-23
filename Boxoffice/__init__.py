@@ -18,7 +18,8 @@ WebApp = flask.Flask(__name__)
 @WebApp.route('/')
 def index_action():
     """Render webpage displaying details of user specified movies."""
-    return flask.render_template('home.tpl')
+    payload = load_json()
+    return flask.render_template('home.tpl', payload=payload)
 
 
 def dump_json(payload):
