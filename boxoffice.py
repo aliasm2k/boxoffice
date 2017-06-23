@@ -4,6 +4,7 @@
 
 import Boxoffice
 import click
+import time
 
 
 @click.command()
@@ -14,7 +15,12 @@ import click
 def launcher(movies):
     """Accept a list of movies and launch Boxoffice."""
     for movie in movies.split(','):
-        Boxoffice.Logger.info(movie.title())
+        mov_obj = Boxoffice.Movie(movie)
+        results = mov_obj.total_results()
+        mov_dict = mov_obj.movie_details()
+        Boxoffice.Logger.info('{} [{} results]'.format(movie.title(), results))
+        Boxoffice.Logger.info(mov_dict)
+        time.sleep(5)
 
 
 if __name__ == '__main__':
